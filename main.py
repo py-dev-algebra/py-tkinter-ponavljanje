@@ -42,12 +42,24 @@ pin_panel = tk.Frame(main_window)
 
 # CheckBox
 cb_expand_var = IntVar()
-cb_expand = tk.Checkbutton(pin_panel, text="Expand", variable=cb_expand_var)
-cb_expand.grid(row=1, column=0)
+lbl_expand = tk.Label(pin_panel, text="Expand")
+lbl_expand.grid(row=0, column=0)
+cb_expand = tk.Checkbutton(pin_panel, variable=cb_expand_var)
+cb_expand.grid(row=0, column=1)
+
 
 lbl_pin = tk.Label(pin_panel,
                    textvariable=cb_expand_var)
-lbl_pin.grid(row=0, column=0)
+lbl_pin.grid(row=1, column=0)
+
+
+lbl_name = tk.Label(pin_panel, text="Ime")
+lbl_name.grid(row=2, column=0)
+entry_name = tk.Entry(pin_panel)
+entry_name.grid(row=2, column=1)
+
+
+
 
 #endregion
 
