@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import IntVar, BooleanVar
 
 
 
@@ -17,30 +18,43 @@ main_window.geometry('600x1000')
 
 
 
-# Button Panel
-button_panel = tk.Frame(main_window)
-button_panel.pack(padx=20, pady=(20, 10))
+#region Button Panel
+button_lbl_frame = tk.LabelFrame(main_window, text='Button frame', padx=30, pady=30)
+button_lbl_frame.pack(padx=20, pady=(20, 10))
 
-lbl_welcome_message = tk.Label(button_panel,
+lbl_welcome_message = tk.Label(button_lbl_frame,
                                text='Dobro dosli')
 lbl_welcome_message.grid(row=0, column=0, columnspan=2)
-ring_buton = tk.Button(button_panel,
+ring_buton = tk.Button(button_lbl_frame,
                        text='Pozvoni - sakrij',
                        command=lambda : hide_pin_panel(pin_panel))
 ring_buton.grid(row=1, column=0)
-unlock_buton = tk.Button(button_panel,
+unlock_buton = tk.Button(button_lbl_frame,
                        text='Otkljucaj',
                        command=show_pin_panel)
 unlock_buton.grid(row=1, column=1)
+#endregion
 
 
 
-
-# PIN Panel
+#region PIN Panel
 pin_panel = tk.Frame(main_window)
+
+# CheckBox
+cb_expand_var = IntVar()
+cb_expand = tk.Checkbutton(pin_panel, text="Expand", variable=cb_expand_var)
+cb_expand.grid(row=1, column=0)
+
 lbl_pin = tk.Label(pin_panel,
-                   text='Ovo je tekst unutar PIN labele')
+                   textvariable=cb_expand_var)
 lbl_pin.grid(row=0, column=0)
+
+#endregion
+
+
+
+
+
 
 
 admin_panel = tk.Frame(main_window)
